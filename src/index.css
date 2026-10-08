@@ -1,0 +1,34 @@
+:root {
+  font-family: Inter, Arial, sans-serif;
+
+  --primary: #2563eb;
+  --secondary: #64748b;
+  --background: #f8fafc;
+  --text: #1e293b;
+  --success: #16a34a;
+  --error: #dc2626;
+  --border: #cbd5e1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
