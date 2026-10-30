@@ -1,117 +1,47 @@
+
 import { Link } from "react-router-dom";
+import "./Footer.css";
 
 function Footer() {
   return (
-    <footer className="bg-dark text-white mt-5">
-
-      <div className="container py-5">
-
-        <div className="row g-4">
-
-          <div className="col-md-4">
-
-            <h5>💻 LaptopHub</h5>
-
-            <p className="text-secondary">
-              Find the perfect laptop for work, study,
-              gaming and everyday use.
-            </p>
-
-          </div>
-
-          <div className="col-md-4">
-
-            <h5>Quick Links</h5>
-
-            <ul className="list-unstyled">
-
-              <li>
-                <Link
-                  className="text-secondary text-decoration-none"
-                  to="/"
-                >
-                  Home
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className="text-secondary text-decoration-none"
-                  to="/products"
-                >
-                  Laptops
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className="text-secondary text-decoration-none"
-                  to="/compare"
-                >
-                  Compare
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className="text-secondary text-decoration-none"
-                  to="/about"
-                >
-                  About
-                </Link>
-              </li>
-
-            </ul>
-
-          </div>
-
-          <div className="col-md-4">
-
-            <h5>Customer Service</h5>
-
-            <ul className="list-unstyled">
-
-              <li>
-                <Link
-                  className="text-secondary text-decoration-none"
-                  to="/orders"
-                >
-                  Orders
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className="text-secondary text-decoration-none"
-                  to="/wishlist"
-                >
-                  Wishlist
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className="text-secondary text-decoration-none"
-                  to="/contact"
-                >
-                  Contact
-                </Link>
-              </li>
-
-            </ul>
-
-          </div>
-
+    <footer className="site-footer">
+      <div className="container footer-grid">
+        <div className="footer-brand">
+          <Link to="/" className="brand">
+            <span className="brand__icon">💻</span>
+            LaptopHub
+          </Link>
+          <p>
+            Find the right laptop for work, study, gaming, and everyday use.
+          </p>
         </div>
 
-        <hr />
-
-        <div className="text-center text-secondary">
-          © 2026 LaptopHub. All Rights Reserved.
+        <div>
+          <h3>Quick Links</h3>
+          <Link to="/">Home</Link>
+          <Link to="/products">Shop Laptops</Link>
+          <Link to="/compare">Compare</Link>
+          <Link to="/wishlist">Wishlist</Link>
         </div>
 
+        <div>
+          <h3>Customer Service</h3>
+          <Link to="/about">About Us</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/orders">My Orders</Link>
+        </div>
+
+        <div>
+          <h3>Account</h3>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Create Account</Link>
+          <Link to="/cart">Shopping Cart</Link>
+        </div>
       </div>
 
+      <div className="footer-bottom">
+        <p>© {new Date().getFullYear()} LaptopHub. All rights reserved.</p>
+      </div>
     </footer>
   );
 }

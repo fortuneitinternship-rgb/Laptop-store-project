@@ -1,93 +1,65 @@
-import { Link } from "react-router-dom";
+
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import "./Navbar.css";
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    <header className="navbar navbar-expand-lg bg-white border-bottom">
-
-      <div className="container">
-
-        <Link
-          className="navbar-brand fw-bold"
-          to="/"
-        >
-          💻 LaptopHub
+    <header className="site-header">
+      <div className="container site-header__inner">
+        <Link to="/" className="brand" onClick={closeMenu}>
+          <span className="brand__icon">💻</span>
+          LaptopHub
         </Link>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mainNavbar"
+        <form
+          className="header-search"
+          onSubmit={(event) => {
+            event.preventDefault();
+            const query = event.currentTarget.elements.search.value.trim();
+            if (query) {
+              window.location.href =
+                `/products?search=${encodeURIComponent(query)}`;
+            }
+          }}
         >
-          <span className="navbar-toggler-icon"></span>
+          <i className="bi bi-search" aria-hidden="true"></i>
+          <input
+            type="search"
+            name="search"
+            placeholder="Search laptops, brands, specs..."
+            aria-label="Search laptops"
+          />
+          <button type="submit">Search</button>
+        </form>
+
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <i className={`bi ${menuOpen ? "bi-x-lg" : "bi-list"}`}></i>
         </button>
 
-        <div
-          className="collapse navbar-collapse"
-          id="mainNavbar"
-        >
-
-          <form className="d-flex mx-lg-auto my-3 my-lg-0">
-            <input
-              className="form-control"
-              type="search"
-              placeholder="Search laptops, brands, specs..."
-            />
-
-            <button
-              className="btn btn-primary ms-2"
-              type="button"
-            >
-              <i className="bi bi-search"></i>
-            </button>
-          </form>
-
-          <ul className="navbar-nav ms-lg-3">
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Home
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/products">
-                Laptops
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/compare">
-                Compare
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/wishlist">
-                <i className="bi bi-heart"></i>
-                Wishlist
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/cart">
-                <i className="bi bi-cart"></i>
-                Cart
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                Login
-              </Link>
-            </li>
-
-          </ul>
-
-        </div>
-
+        <nav className={`site-nav ${menuOpen ? "site-nav--open" : ""}`}>
+          <NavLink to="/" onClick={closeMenu}>Home</NavLink>
+          <NavLink to="/products" onClick={closeMenu}>Laptops</NavLink>
+          <NavLink to="/compare" onClick={closeMenu}>Compare</NavLink>
+          <NavLink to="/wishlist" onClick={closeMenu}>
+            <i className="bi bi-heart" aria-hidden="true"></i> Wishlist
+          </NavLink>
+          <NavLink to="/cart" onClick={closeMenu}>
+            <i className="bi bi-cart3" aria-hidden="true"></i> Cart
+          </NavLink>
+          <NavLink to="/login" onClick={closeMenu}>Login</NavLink>
+        </nav>
       </div>
-
     </header>
   );
 }

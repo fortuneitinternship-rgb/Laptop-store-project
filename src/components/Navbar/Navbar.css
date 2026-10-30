@@ -1,0 +1,139 @@
+
+.site-header {
+  position: relative;
+  z-index: 100;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text);
+  font-size: 1.35rem;
+  font-weight: 750;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand__icon {
+  font-size: 1.5rem;
+}
+
+.header-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  max-width: 430px;
+  padding: 7px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-background);
+}
+
+.header-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+
+.header-search button {
+  border: 0;
+  border-radius: var(--radius-sm);
+  padding: 7px 12px;
+  background: var(--color-primary);
+  color: white;
+  cursor: pointer;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.site-nav a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.site-nav a.active {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.menu-toggle {
+  display: none;
+  padding: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+@media (max-width: 991px) {
+  .site-header__inner {
+    flex-wrap: wrap;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    gap: 12px;
+  }
+
+  .header-search {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  .site-nav {
+    display: none;
+    order: 4;
+    flex-basis: 100%;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .site-nav--open {
+    display: flex;
+  }
+
+  .site-nav a {
+    padding: 12px 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand {
+    font-size: 1.15rem;
+  }
+
+  .header-search button {
+    padding: 7px 9px;
+  }
+}

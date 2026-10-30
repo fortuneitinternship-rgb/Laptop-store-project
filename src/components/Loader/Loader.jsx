@@ -1,16 +1,15 @@
-function Loader() {
+
+import "./Loader.css";
+
+function Loader({ message = "Loading...", fullPage = false }) {
   return (
-    <div className="d-flex justify-content-center align-items-center p-5">
-
-      <div
-        className="spinner-border text-primary"
-        role="status"
-      >
-        <span className="visually-hidden">
-          Loading...
-        </span>
-      </div>
-
+    <div
+      className={`app-loader ${fullPage ? "app-loader--full-page" : ""}`}
+      role="status"
+      aria-live="polite"
+    >
+      <span className="app-loader__spinner" aria-hidden="true"></span>
+      <span>{message}</span>
     </div>
   );
 }
